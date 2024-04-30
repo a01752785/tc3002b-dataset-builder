@@ -84,6 +84,7 @@ def make_dataframe(same_sentences: List[Tuple[str]]) -> pd.DataFrame:
                                          columns=["sentence1",
                                                   "sentence2"])
     df_same["same"] = 1
+    df_same["type_plagiarism"] = "paraphrase"
     return df_same
 
 

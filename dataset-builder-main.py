@@ -85,10 +85,12 @@ def make_dataframe(different_sentences: List[Tuple[str]],
                                               columns=["sentence1",
                                                        "sentence2"])
     df_different["same"] = 0
+    df_different["type_plagiarism"] = "different"
     df_same: pd.DataFrame = pd.DataFrame(same_sentences,
                                          columns=["sentence1",
                                                   "sentence2"])
     df_same["same"] = 1
+    df_same["type_plagiarism"] = "copy"
     return pd.concat([df_different, df_same])
 
 
@@ -110,7 +112,9 @@ def main() -> None:
     df: pd.DataFrame = make_dataframe(different_pairs, synonym_pairs + duplicate_pairs)
     df_passive: pd.DataFrame = load_dataframe("passive_sentences.csv")
     df_double_negation: pd.DataFrame = load_dataframe("double_negation_sentences.csv")
-    df = pd.concat([df, df_passive, df_double_negation])
+    df_future_tense: pd.DataFrame = load_dataframe("future_tense_sentences.csv")
+    df_paraphrase: pd.DataFrame = load_dataframe("paraphrase_sentences.csv")
+    df = pd.concat([df, df_passive, df_double_negation, df_future_tense, df_paraphrase])
     print(df.describe())
     df.to_csv("sentences.csv", index = False)
 

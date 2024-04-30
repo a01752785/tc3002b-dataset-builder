@@ -34,7 +34,7 @@ def split_sentences(files_content: List[str]) -> List[str]:
 
 
 def clean_response(gemini_response: str) -> str:
-    token = "Passive voice:"
+    token = "Change of tense:"
     idx = gemini_response.rfind(token)
     if idx != -1:
         return gemini_response[idx+len(token) + 1:]
@@ -57,16 +57,16 @@ def make_passive_sentences(sentences: List[str],
 
             response = model.generate_content(
                 """
-                Active voice: This study provided a content analysis of studies aiming to
+                Original: This study provided a content analysis of studies aiming to
                 disclose how artificial intelligence (AI) has been applied to the education
                 sector and explore the potential research trends and challenges of AI
                 in education.
-                Passive voice: Content analysis of studies is provided by this study, aiming to
-                disclose how artificial intelligence (AI) has been applied to the education
-                sector and explore the potential research trends and challenges of AI
+                Change of tense: This study will provide a content analysis of studies
+                that will aim to disclose how artificial intelligence (AI) will be applied to the education
+                sector and will explore the potential research trends and challenges of AI
                 in education.
-                Active voice: {\\sentence}
-                Passive voice: 
+                Original: {\\sentence}
+                Change of tense: 
                 """.replace("{\\sentence}", sentences[i])
                 )
             cleaned = clean_response(response.text)
@@ -84,7 +84,7 @@ def make_dataframe(same_sentences: List[Tuple[str]]) -> pd.DataFrame:
                                          columns=["sentence1",
                                                   "sentence2"])
     df_same["same"] = 1
-    df_same["type_plagiarism"] = "active_passive"
+    df_same["type_plagiarism"] = "tense"
     return df_same
 
 
@@ -120,14 +120,14 @@ def main() -> None:
     print(df.head())
     previous_df = pd.DataFrame()
     try:
-        previous_df = pd.read_csv("passive_sentences.csv")
+        previous_df = pd.read_csv("future_tense_sentences.csv")
         print(previous_df.head())
         df = pd.concat([previous_df, df])
         print(df.head())
     except:
         pass
     
-    df.to_csv("passive_sentences.csv", index = False)
+    df.to_csv("future_tense_sentences.csv", index = False)
 
 if __name__=="__main__":
     main()
