@@ -61,9 +61,11 @@ def make_passive_sentences(sentences: List[str],
                 disclose how artificial intelligence (AI) has been applied to the education
                 sector and explore the potential research trends and challenges of AI
                 in education.
-                Paraphrase: This study analyzed research that investigates how artificial
-                intelligence (AI) is used in education, and what the future directions and
-                difficulties of AI in the classroom might be.
+                Paraphrase: This study employed a rigorous content analysis methodology to
+                examine extant research, seeking to illuminate the varied applications of
+                artificial intelligence (AI) within the educational domain while simultaneously
+                delineating promising avenues for future investigation and the inherent challenges
+                posed by AI integration.
                 Original: {\\sentence}
                 Paraphrase: 
                 """.replace("{\\sentence}", sentences[i])

@@ -114,7 +114,9 @@ def main() -> None:
     df_double_negation: pd.DataFrame = load_dataframe("double_negation_sentences.csv")
     df_future_tense: pd.DataFrame = load_dataframe("future_tense_sentences.csv")
     df_paraphrase: pd.DataFrame = load_dataframe("paraphrase_sentences.csv")
-    df = pd.concat([df, df_passive, df_double_negation, df_future_tense, df_paraphrase])
+    df_translation: pd.DataFrame = load_dataframe("translation_sentences.csv")
+    df = pd.concat([df, df_passive, df_double_negation,
+                    df_future_tense, df_paraphrase, df_translation])
     print(df.describe())
     df.to_csv("sentences.csv", index = False)
 

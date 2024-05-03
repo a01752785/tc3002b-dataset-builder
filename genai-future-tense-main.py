@@ -61,9 +61,9 @@ def make_passive_sentences(sentences: List[str],
                 disclose how artificial intelligence (AI) has been applied to the education
                 sector and explore the potential research trends and challenges of AI
                 in education.
-                Change of tense: This study will provide a content analysis of studies
-                that will aim to disclose how artificial intelligence (AI) will be applied to the education
-                sector and will explore the potential research trends and challenges of AI
+                Change of tense: This study has provided a content analysis of studies
+                that have aimed to disclose how artificial intelligence (AI) has been applied to the education
+                sector and have explored the potential research trends and challenges of AI
                 in education.
                 Original: {\\sentence}
                 Change of tense: 
